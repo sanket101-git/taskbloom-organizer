@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { format } from 'date-fns';
 import { CalendarIcon } from 'lucide-react';
@@ -83,7 +82,11 @@ export const CreateTaskDialog: React.FC<CreateTaskDialogProps> = ({
       });
     } else {
       addTask({
-        ...values,
+        title: values.title,
+        description: values.description || '',
+        dueDate: values.dueDate,
+        priority: values.priority,
+        category: values.category,
         completed: false,
       });
     }
