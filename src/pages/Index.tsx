@@ -1,13 +1,36 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import { Navbar } from '@/components/Navbar';
+import { TaskList } from '@/components/TaskList';
+import { TaskFilter } from '@/components/TaskFilter';
+import { TaskStats } from '@/components/TaskStats';
+import { TaskProvider } from '@/context/TaskContext';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <TaskProvider>
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 to-indigo-50">
+        <Navbar />
+        
+        <div className="container mx-auto px-4 py-8 flex-1">
+          <TaskStats />
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-1">
+              <TaskFilter />
+            </div>
+            
+            <div className="md:col-span-2">
+              <TaskList />
+            </div>
+          </div>
+        </div>
+        
+        <footer className="w-full py-4 text-center text-gray-500 text-sm border-t border-gray-100 glass">
+          <p>TaskMaster &copy; {new Date().getFullYear()} • Your Tasks, Organized</p>
+        </footer>
       </div>
-    </div>
+    </TaskProvider>
   );
 };
 
